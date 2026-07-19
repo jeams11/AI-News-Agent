@@ -15,7 +15,6 @@ Supported sources:
 - BBC Chinese
 - AIBase
 
-
 Technologies:
 
 - Requests
@@ -62,7 +61,7 @@ Output formats:
 
 Using:
 
-SQLite
+- SQLite
 
 
 Stored information:
@@ -98,6 +97,7 @@ Technologies:
 
 # Project Structure
 
+
 ```text
 AI-News-Agent
 
@@ -114,101 +114,3 @@ AI-News-Agent
 ├── requirements.txt     Python dependencies
 │
 └── README.md
-```
-
----
-
-# Installation
-
-## 1. Clone Repository
-
-
-```bash
-git clone https://github.com/jeams11/AI-News-Agent.git
-
-cd AI-News-Agent
-2. Create Virtual Environment
-
-Create an isolated Python environment:
-
-python3 -m venv venv
-
-Activate virtual environment:
-
-source venv/bin/activate
-3. Install Dependencies
-
-Install required Python packages:
-
-pip install -r requirements.txt
-
-Install Playwright browser:
-
-playwright install chromium
-Usage
-1. News Crawling
-
-Enter crawler directory:
-
-cd crawler
-
-Run BBC crawler:
-
-python bbc.py
-
-Run AIBase crawler:
-
-python aibase.py
-2. AI News Summarization
-
-Enter summary directory:
-
-cd summary
-
-Run AI summarization:
-
-python summarize.py
-
-Generated output:
-
-news_report.md
-3. Web Service
-
-Start web server:
-
-Start web server:
-
-```bash
-python web/app.py
-
-AI-News-Agent includes an automated scheduler.
-
-It can automatically execute:
-
-News crawling every hour
-AI news summarization every 12 hours
-
-Run scheduler:
-
-python scheduler.py
-Technology Stack
-
-这是普通文字。
-
-应该改成：
-
-```markdown
-# Technology Stack
-
-| Technology | Purpose |
-|------------|---------|
-| Python | Core programming language |
-| Playwright | Browser automation |
-| BeautifulSoup | HTML parsing |
-| SQLite | Database storage |
-| FastAPI | Web API framework |
-| OpenAI SDK | LLM integration |
-| Qwen / DeepSeek | AI news analysis |
-FastAPI	Web API framework
-OpenAI SDK	LLM integration
-Qwen / DeepSeek	AI news analysis
