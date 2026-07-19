@@ -1,8 +1,12 @@
 requests
 beautifulsoup4
+lxml
 playwright
 flask
 fastapi
 uvicorn
 schedule
 openai
+python-dotenv
+opencc
+markdownify
