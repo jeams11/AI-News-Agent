@@ -3,19 +3,15 @@ import time
 import subprocess
 import os
 from datetime import datetime
-
-
 BASE_DIR = "/Users/james/AI-News-Agent"
-
 CRAWLER_DIR = os.path.join(BASE_DIR, "crawler")
 SUMMARY_DIR = os.path.join(BASE_DIR, "summary")
 
-
 def run_command(command, workdir):
-    print("\n==============================")
-    print("执行:", command)
-    print("时间:", datetime.now())
-    print("==============================")
+
+    print(
+        f"\n[{datetime.now()}] 执行任务: {command}"
+    )
 
     subprocess.run(
         command,
@@ -23,11 +19,10 @@ def run_command(command, workdir):
         cwd=workdir
     )
 
-
-# 每小时抓取新闻
+# 每小时执行新闻采集任务
 def crawl_news():
 
-    print("开始抓取新闻...")
+    print("\n开始抓取新闻...")
 
     run_command(
         "python bbc.py",
@@ -46,11 +41,10 @@ def crawl_news():
 
     print("新闻抓取完成")
 
-
-# 每12小时生成AI日报
+# 每12小时执行AI总结任务
 def generate_summary():
 
-    print("开始AI总结...")
+    print("\n开始AI总结...")
 
     run_command(
         "python summarize.py",
@@ -60,33 +54,32 @@ def generate_summary():
     print("AI日报生成完成")
 
 
-# 每小时执行
+
+# 设置定时任务
 schedule.every(1).hours.do(crawl_news)
 
-# 每12小时执行
 schedule.every(12).hours.do(generate_summary)
 
-
-print("""
-==============================
- AI News Agent Scheduler
-==============================
+print(
+"""
+AI News Agent Scheduler
 
 任务:
-
-1小时:
+- 每小时:
   新闻抓取 + 数据库更新
 
-12小时:
+- 每12小时:
   Qwen AI总结 + Markdown日报
 
-启动成功...
-==============================
-""")
+启动成功
+"""
+)
 
-
+# 持续监听任务
 while True:
 
     schedule.run_pending()
+
+    time.sleep(30)
 
     time.sleep(30)

@@ -3,19 +3,12 @@ import requests
 from datetime import datetime
 
 
-# ==========================
 # 文件路径
-# ==========================
-
 input_file = "../data/all_news.json"
 
 output_file = "../data/news_report.md"
 
-
-
-# ==========================
 # 读取新闻数据
-# ==========================
 
 with open(
     input_file,
@@ -24,11 +17,7 @@ with open(
 ) as f:
     news = json.load(f)
 
-
-
-# ==========================
 # 构造新闻文本
-# ==========================
 
 news_text = ""
 
@@ -68,15 +57,10 @@ for i, item in enumerate(news[:30]):
 正文:
 {content[:600]}
 
-====================
 
 """
 
-
-
-# ==========================
-# 给模型的提示词
-# ==========================
+# 给AI的提示词
 
 prompt = f"""
 你是一名专业AI新闻编辑。
@@ -134,13 +118,9 @@ prompt = f"""
 """
 
 
-
-# ==========================
-# 调用 Ollama
-# ==========================
+# 调用 Ollama AI
 
 print("正在调用本地Qwen模型...")
-
 
 response = requests.post(
     "http://localhost:11434/api/generate",
@@ -152,17 +132,12 @@ response = requests.post(
 )
 
 
-
 result = response.json().get(
     "response",
     ""
 )
 
-
-
-# ==========================
 # 保存 Markdown
-# ==========================
 
 with open(
     output_file,
