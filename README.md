@@ -114,7 +114,9 @@ AI-News-Agent
 ├── requirements.txt     Python dependencies
 │
 └── README.md
-Installation
+```
+
+# Installation
 1. Clone Repository
 git clone https://github.com/jeams11/AI-News-Agent.git
 
