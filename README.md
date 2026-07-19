@@ -1,21 +1,14 @@
 # AI-News-Agent
 
+An intelligent news automation system powered by Large Language Models (LLM).
 
-AI-News-Agent is an intelligent news automation system.
+AI-News-Agent automatically crawls news articles, analyzes content with AI models, and generates structured news reports.
 
-It automatically:
+---
 
-- Crawls news from websites
-- Stores articles into SQLite database
-- Uses LLM models to summarize news
-- Generates AI-powered news reports
-- Provides web interface and API
+# Features
 
-
-## Features
-
-
-### News Crawling
+## Automated News Crawling
 
 Supported sources:
 
@@ -30,54 +23,78 @@ Technologies:
 - Playwright
 
 
-### AI Summary
+The system can automatically:
 
+- Collect news titles
+- Extract article URLs
+- Crawl article content
+- Store news data
+
+
+---
+
+## AI-Powered News Analysis
 
 Supports:
 
 - DeepSeek API
 - Qwen API
-- OpenAI compatible API
+- OpenAI Compatible API
 
 
-The system automatically generates:
+AI automatically generates:
 
-- News summary
-- Importance score
-- Keywords
-- Category analysis
+- News summaries
+- Importance scores
+- Categories
+- Keywords extraction
 
 
+Output formats:
 
-### Database
+- SQLite database storage
+- Markdown news reports
 
+
+---
+
+## Database
 
 Using:
 
 SQLite
 
 
-Database stores:
+Stored information:
 
-- Title
+- News title
 - URL
 - Source
-- Content
-- Summary
+- Publication time
+- Article content
+- AI summary
 - Keywords
+- Category
 
 
+---
 
-### Web Interface
-
+## Web Dashboard
 
 Provides:
 
-- News dashboard
+- News browsing interface
 - AI analysis results
-- API interface
+- News API service
 
 
+Technologies:
 
-## Project Structure
+- FastAPI
+- SQLite
+
+
+---
+
+# Project Structure
 
