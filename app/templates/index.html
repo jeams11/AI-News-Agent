@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI News Agent</title>
+
+<style>
+body {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    background:#f4f6fb;
+    margin:0;
+    padding:30px;
+}
+
+.header {
+    text-align:center;
+}
+
+.stats {
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    margin:30px;
+    flex-wrap:wrap;
+}
+
+.stat {
+    background:white;
+    padding:20px 35px;
+    border-radius:15px;
+    box-shadow:0 5px 15px #ddd;
+    text-align:center;
+}
+
+.card {
+    background:white;
+    max-width:900px;
+    margin:20px auto;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.title {
+    font-size:23px;
+    font-weight:bold;
+}
+
+.title a {
+    color:inherit;
+    text-decoration:none;
+}
+
+.title a:hover {
+    color:#2563eb;
+}
+
+.star {
+    color:#ff9800;
+    font-size:18px;
+}
+
+.tag {
+    margin-top:10px;
+    color:#555;
+}
+
+.keyword {
+    color:#2563eb;
+}
+
+.summary {
+    margin-top:20px;
+    line-height:1.8;
+    white-space:pre-wrap;
+}
+
+.empty {
+    text-align:center;
+    color:#888;
+    margin-top:60px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>🤖 AI News Agent</h1>
+    <p>更新时间：{{ time }}</p>
+    <p><a href="/docs">API 文档</a> · <a href="/api/report">Markdown 日报</a></p>
+</div>
+
+<div class="stats">
+    <div class="stat">
+        <h3>新闻总量</h3>
+        {{ stats.total }}
+    </div>
+    <div class="stat">
+        <h3>AI 已分析</h3>
+        {{ stats.analyzed }}
+    </div>
+    <div class="stat">
+        <h3>重要新闻</h3>
+        {{ stats.important }}
+    </div>
+</div>
+
+<h2 style="text-align:center">🔥 今日重点新闻</h2>
+
+{% for item in news %}
+<div class="card">
+    <div class="star">重要程度：{{ "⭐" * (item.importance or 0) }}</div>
+
+    <div class="title">
+        <a href="{{ item.url }}" target="_blank" rel="noopener">{{ item.title }}</a>
+    </div>
+
+    <div class="tag">来源：{{ item.source }} · 分类：{{ item.category or "未分类" }}</div>
+
+    {% if item.keywords %}
+    <div class="tag keyword">关键词：{{ item.keywords }}</div>
+    {% endif %}
+
+    <div class="summary"><h3>🧠 AI 分析</h3>{{ item.summary }}</div>
+</div>
+{% else %}
+<div class="empty">
+    <p>暂无已分析的新闻。</p>
+    <p>可调用 <code>POST /api/tasks/crawl</code> 抓取新闻，再调用 <code>POST /api/tasks/summarize</code> 进行 AI 分析。</p>
+</div>
+{% endfor %}
+
+</body>
+</html>

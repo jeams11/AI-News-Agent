@@ -1,0 +1,28 @@
+services:
+  app:
+    build: .
+    container_name: ai-news-agent
+    ports:
+      - "${API_PORT:-8000}:${API_PORT:-8000}"
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      # 数据库与日报持久化在宿主机 data/ 目录
+      - ./data:/app/data
+    restart: unless-stopped
+
+  # 可选：本地 Ollama 模型服务
+  # 启动: docker compose --profile ollama up -d
+  # 并在 .env 中设置 LLM_BASE_URL=http://ollama:11434/v1
+  # 首次需要拉取模型: docker exec ai-news-ollama ollama pull qwen2.5:7b
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ai-news-ollama
+    profiles: ["ollama"]
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+
+volumes:
+  ollama_data:

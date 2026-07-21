@@ -1,12 +1,23 @@
-requests
-beautifulsoup4
-lxml
-playwright
-flask
-fastapi
-uvicorn
-schedule
-openai
-python-dotenv
-opencc
-markdownify
+# Web
+fastapi>=0.111
+uvicorn[standard]>=0.30
+jinja2>=3.1
+
+# 配置
+pydantic-settings>=2.3
+python-dotenv>=1.0
+
+# 爬虫
+requests>=2.32
+beautifulsoup4>=4.12
+lxml>=5.0
+playwright>=1.45
+
+# AI
+openai>=1.30
+
+# 数据处理
+opencc>=1.1
+
+# 调度
+apscheduler>=3.10
